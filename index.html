@@ -43,52 +43,67 @@
       gap: 10px;
     }
 
-    /* Botão de copiar */
+    /* COPIAR */
     #copyBtn {
       background: #00eaff;
       color: #000;
       box-shadow: 0 0 12px #00eaff, 0 0 25px #00eaff inset;
       animation: pulseNeon 2s infinite;
     }
-
     #copyBtn:hover {
       transform: scale(1.07);
       box-shadow: 0 0 18px #00eaff, 0 0 35px #00eaff inset;
     }
 
-    /* Botão Discord */
+    /* DISCORD */
     #discordBtn {
       background: #5865F2;
       color: white;
       box-shadow: 0 0 12px #5865F2;
       animation: pulseDiscord 2.2s infinite;
     }
-
     #discordBtn:hover {
       transform: scale(1.07);
       box-shadow: 0 0 20px #5865F2;
     }
 
-    /* Botão Instagram */
+    /* INSTAGRAM */
     #instaBtn {
       background: #ff2dab;
       color: white;
       box-shadow: 0 0 12px #ff2dab;
       animation: pulseInsta 2.3s infinite;
     }
-
     #instaBtn:hover {
       transform: scale(1.07);
       box-shadow: 0 0 22px #ff2dab;
     }
 
+    /* TIKTOK */
+    #tiktokBtn {
+      background: #000;
+      color: white;
+      box-shadow: 0 0 12px #00fff2;
+      border: 2px solid #00fff2;
+      animation: pulseTikTok 2.4s infinite;
+    }
+    #tiktokBtn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 22px #00fff2;
+    }
+
+    @keyframes pulseTikTok {
+      0%   { box-shadow: 0 0 12px #00fff2; }
+      50%  { box-shadow: 0 0 28px #00fff2; }
+      100% { box-shadow: 0 0 12px #00fff2; }
+    }
+
     @keyframes pulseInsta {
-      0%   { box-shadow: 0 0 10px #ff2dab; }
-      50%  { box-shadow: 0 0 26px #ff2dab; }
+      0% { box-shadow: 0 0 10px #ff2dab; }
+      50% { box-shadow: 0 0 26px #ff2dab; }
       100% { box-shadow: 0 0 10px #ff2dab; }
     }
 
-    /* Animações gerais */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -119,35 +134,24 @@
 
   <button id="copyBtn">📋 Copiar Link</button>
 
-  <!-- Botão do Discord COM SVG COMPLETO 100% FUNCIONAL -->
+  <!-- DISCORD -->
   <button id="discordBtn">
-    <svg width="26" height="26" viewBox="0 0 245 240" fill="white">
-      <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 
-      10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1zm36.2 
-      0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 
-      0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
-      <path d="M189.5 20h-134C44.2 20 36 28.2 36 
-      38.6v135.2c0 10.4 8.2 18.6 18.5 
-      18.6h113.4l-5.3-18.5 12.8 11.9 12.1 
-      11.2 21.5 19V38.6c0-10.4-8.2-18.6-18.5-18.6zm-38.7 
-      128.2s-3.6-4.3-6.6-8c13.1-3.7 18.1-11.9 18.1-11.9-4.1 
-      2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 
-      4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-0.9-4.8-2-7.3-3.4-0.3-0.2-0.5-0.3-0.8-0.5-0.2-0.1-0.3-0.2-0.4-0.3-1.8-1-2.8-1.7-2.8-1.7s4.8 
-      8 17.5 11.8c-3 3.8-6.8 8.3-6.8 8.3-22.5-0.7-31-15.5-31-15.5 0-32.8 
-      14.7-59.4 14.7-59.4 14.7-11 28.6-10.7 28.6-10.7l1 
-      1.2c-18.3 5.2-26.8 13.2-26.8 13.2s2.2-1.2 5.9-2.9c10.7-4.7 
-      19.2-6 22.7-6.3 0.6-0.1 1.1-0.2 1.7-0.2 6.1-0.8 13-1 
-      20.2-0.2 9.5 1.1 19.7 3.9 30.1 9.6 0 
-      0-8-7.6-25.3-12.8l1.4-1.6s13.9-0.3 28.6 10.7c0 
-      0 14.7 26.6 14.7 59.4 0 0-8.6 14.8-31.1 15.5z"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152..."/>
     </svg>
     Entrar no Discord
   </button>
 
-  <!-- Botão Instagram -->
+  <!-- INSTAGRAM -->
   <button id="instaBtn">
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="26" height="26">
     Meu Instagram
+  </button>
+
+  <!-- TIKTOK -->
+  <button id="tiktokBtn">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="26" height="26">
+    Meu TikTok
   </button>
 
   <script>
@@ -155,6 +159,7 @@
 
     const linkDiscord = "https://discord.gg/Ca8yf6hKHe";
     const linkInstagram = "https://www.instagram.com/ruan.z2/?hl=pt-br";
+    const linkTikTok = "https://www.tiktok.com/@ruan.z2";
 
     document.getElementById("copyBtn").onclick = () => {
       navigator.clipboard.writeText(linkParaCopiar);
@@ -168,6 +173,11 @@
     document.getElementById("instaBtn").onclick = () => {
       window.location.href = linkInstagram;
     };
+
+    document.getElementById("tiktokBtn").onclick = () => {
+      window.location.href = linkTikTok;
+    };
   </script>
+
 </body>
 </html>
