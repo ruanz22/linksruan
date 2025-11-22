@@ -43,7 +43,7 @@
       gap: 10px;
     }
 
-    /* COPIAR */
+    /* PC & IOS COPY */
     #copyBtn {
       background: #00eaff;
       color: #000;
@@ -53,6 +53,19 @@
     #copyBtn:hover {
       transform: scale(1.07);
       box-shadow: 0 0 18px #00eaff, 0 0 35px #00eaff inset;
+    }
+
+    /* ANDROID COPY */
+    #copyAndroidBtn {
+      background: #00eaff;
+      color: #000;
+      border: 2px solid #00eaff;
+      box-shadow: 0 0 14px #00eaff;
+      animation: pulseNeon 2.1s infinite;
+    }
+    #copyAndroidBtn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 22px #00eaff;
     }
 
     /* DISCORD */
@@ -133,9 +146,13 @@
 
   <h1>Meus links</h1>
 
-  <button id="copyBtn">📋 Copiar Link do Token</button>
+  <!-- PC & IOS -->
+  <button id="copyBtn">📋 Copiar Link do Token (PC & iOS)</button>
 
-  <!-- DISCORD - SVG OFICIAL, 100% FUNCIONAL -->
+  <!-- ANDROID -->
+  <button id="copyAndroidBtn">📱 Copiar Token Android</button>
+
+  <!-- DISCORD -->
   <button id="discordBtn">
     <svg width="26" height="26" viewBox="0 0 245 240" fill="white">
       <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
@@ -157,15 +174,24 @@
   </button>
 
   <script>
-    const linkParaCopiar = `javascript:(()=>{const key="FF_TOKEN";const e=document.createElement("div");e.id="popup-ruan-z2";Object.assign(e.style,{position:"fixed",top:"20px",right:"20px",zIndex:"999999",padding:"20px 25px",background:"#111",color:"#00eaff",borderRadius:"16px",fontFamily:"Arial, sans-serif",boxShadow:"0 0 15px #00eaff,0 0 30px #00eaff inset",border:"2px solid #00eaff",transition:"all .25s ease",opacity:"0",textAlign:"center"});e.innerHTML=\`<div style="font-size:22px;font-weight:bold;margin-bottom:12px;text-shadow:0 0 10px #00eaff;">Painel @ruan.z2</div><div id="token-display" style="font-size:16px;margin-bottom:12px;color:#0ff;text-shadow:0 0 6px #0ff;">Token ainda não mostrado</div><button id="mostrar-token" style="background:#00eaff;color:#000;padding:10px 16px;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-weight:bold;box-shadow:0 0 12px #00eaff;margin-right:10px;">Mostrar token</button><button id="copiar-token" style="background:#0f0;color:#000;padding:10px 16px;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-weight:bold;box-shadow:0 0 12px #00f0;margin-right:10px;">Copiar</button><button id="fechar-ruan" style="background:#ff0033;color:#fff;padding:10px 16px;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-weight:bold;box-shadow:0 0 12px #ff0033;">Fechar</button>\`;document.body.appendChild(e);setTimeout(()=>{e.style.opacity="1"},30);document.getElementById("mostrar-token").onclick=()=>{const v=localStorage.getItem(key);document.getElementById("token-display").textContent=v!==null?v:"Nenhum valor encontrado"};document.getElementById("copiar-token").onclick=()=>{const v=localStorage.getItem(key);if(v===null){alert("Nenhum valor encontrado");return;}navigator.clipboard.writeText(v).then(()=>{alert("Token copiado!")}).catch(()=>{alert("Erro ao copiar")})};document.getElementById("fechar-ruan").onclick=()=>{e.style.opacity="0";setTimeout(()=>e.remove(),250)}})();`;
+    /* NOVO SCRIPT PC & IOS */
+    const scriptPCIOS = `javascript:(()=>{const v=localStorage.getItem("CODE");if(!v||v.length!==64)return alert("❌ Nenhum TOKEN válido encontrado em localStorage(CODE).");const css=\`<style>#ruan-panel{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0b0b0b;border:2px solid #00eaff;color:#00eaff;padding:26px;border-radius:20px;z-index:999999;font-family:Arial,sans-serif;width:90%;max-width:600px;text-align:center;box-shadow:0 0 25px #00eaff,inset 0 0 30px #0099ff55;opacity:0;transition:.25s}#ruan-title{font-size:26px;font-weight:bold;margin-bottom:10px;text-shadow:0 0 14px #00eaff}#ruan-found{font-size:18px;margin-bottom:15px;color:#00ffd5;font-weight:bold;text-shadow:0 0 10px #00ffd5}#ruan-token{width:100%;height:190px;background:#000;color:#0f0;border:1px solid #00eaff;border-radius:12px;padding:10px;margin-bottom:18px;resize:none;overflow:auto;font-family:monospace;font-size:14px}#ruan-copy,#ruan-close{padding:10px 20px;border:none;border-radius:12px;font-size:15px;cursor:pointer;font-weight:bold;margin:5px;transition:.2s;box-shadow:0 0 12px}#ruan-copy{background:#0f0;color:#000;box-shadow:0 0 12px #0f0}#ruan-close{background:#f33;color:#fff;box-shadow:0 0 12px #f33}#ruan-copy:hover,#ruan-close:hover{transform:scale(1.07)}</style>\`;const html=\`<div id="ruan-panel"><div id="ruan-title">🔍 Scanner @ruan.z2</div><div id="ruan-found">✅ TOKEN ENCONTRADO — ENVIE PARA @RUAN.Z2</div><textarea id="ruan-token" readonly>\${v}</textarea><button id="ruan-copy">Copiar</button><button id="ruan-close">Fechar</button></div>\`;document.body.insertAdjacentHTML("beforeend",css+html);const b=document.getElementById("ruan-panel");setTimeout(()=>b.style.opacity="1",20);document.getElementById("ruan-copy").onclick=()=>{navigator.clipboard.writeText(v).then(()=>alert("📋 TOKEN copiado!")).catch(()=>alert("Erro ao copiar"))};document.getElementById("ruan-close").onclick=()=>{b.style.opacity="0";setTimeout(()=>b.remove(),250)}})();`;
+
+    /* SCRIPT ANDROID */
+    const scriptAndroid = `javascript:(()=>{let v=localStorage.getItem("CODE");if(!v||v.length!=64)return alert("❌ Nenhum CODE válido encontrado");let d=document.createElement("div");d.style="position:fixed;top:20px;left:20px;right:20px;padding:15px;background:#111;color:#0ff;font-family:monospace;border:2px solid #0ff;border-radius:10px;z-index:999999;box-shadow:0 0 10px #0ff";d.innerHTML='<div style="margin-bottom:8px;font-weight:bold">CODE encontrado:</div><div style="word-break:break-all;margin-bottom:10px">'+v+'</div><button id="c1" style="padding:8px 12px;font-weight:bold;border:none;border-radius:6px;background:#0f0;color:#000">Copiar</button> <button id="c2" style="padding:8px 12px;font-weight:bold;border:none;border-radius:6px;background:#f33;color:#fff">Fechar</button>';document.body.appendChild(d);c1.onclick=()=>navigator.clipboard.writeText(v).then(()=>alert("✅ CODE copiado!")).catch(()=>alert("⚠️ Copie manualmente:\\n"+v));c2.onclick=()=>d.remove();})();`;
 
     const linkDiscord = "https://discord.gg/KEQn5pPsWg";
     const linkInstagram = "https://www.instagram.com/ruan.z2/?hl=pt-br";
     const linkTikTok = "https://www.tiktok.com/@ruan.z2";
 
     document.getElementById("copyBtn").onclick = () => {
-      navigator.clipboard.writeText(linkParaCopiar);
-      alert("Link copiado!");
+      navigator.clipboard.writeText(scriptPCIOS);
+      alert("Link (PC & iOS) copiado!");
+    };
+
+    document.getElementById("copyAndroidBtn").onclick = () => {
+      navigator.clipboard.writeText(scriptAndroid);
+      alert("Link Android copiado!");
     };
 
     document.getElementById("discordBtn").onclick = () => {
