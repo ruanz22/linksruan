@@ -125,8 +125,8 @@ const bookmarkletPC = `javascript:(function(){
   };
 })();`;
 
-// Copiar bookmarklet
-document.getElementById('btnCopyPC').addEventListener('click', ()=>{
+// Copiar bookmarklet (fallback para todos os navegadores)
+document.getElementById('btnCopyPC').addEventListener('click', function() {
   const temp = document.createElement('textarea');
   temp.value = bookmarkletPC;
   document.body.appendChild(temp);
@@ -136,10 +136,16 @@ document.getElementById('btnCopyPC').addEventListener('click', ()=>{
   alert('📋 Bookmarklet PC & iOS copiado!');
 });
 
-// Abrir links
-document.getElementById('btnDiscord').addEventListener('click', ()=>window.open('https://discord.gg/KEQn5pPsWg','_blank'));
-document.getElementById('btnInsta').addEventListener('click', ()=>window.open('https://www.instagram.com/ruan.z2/?hl=pt-br','_blank'));
-document.getElementById('btnTikTok').addEventListener('click', ()=>window.open('https://www.tiktok.com/@ruan.z2','_blank'));
+// Abrir links com funções normais (garante que pop-ups não serão bloqueados)
+document.getElementById('btnDiscord').addEventListener('click', function() {
+    window.open('https://discord.gg/KEQn5pPsWg', '_blank');
+});
+document.getElementById('btnInsta').addEventListener('click', function() {
+    window.open('https://www.instagram.com/ruan.z2/?hl=pt-br', '_blank');
+});
+document.getElementById('btnTikTok').addEventListener('click', function() {
+    window.open('https://www.tiktok.com/@ruan.z2', '_blank');
+});
 </script>
 
 </body>
