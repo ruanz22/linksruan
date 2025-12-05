@@ -61,7 +61,7 @@ button img { display: block; }
 
 <!-- Botões links -->
 <button id="btnDiscord">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="26" height="26">
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="26" height="26">
   Entrar no Discord
 </button>
 <button id="btnInsta">
@@ -88,20 +88,52 @@ const bookmarkletPC = `javascript:(function(){
 </div>\`;
   document.body.appendChild(panel);
   setTimeout(()=>{panel.style.transform='translate(-50%,-50%) scale(1)';panel.style.opacity='1';},50);
+  
   let token = localStorage.getItem("token")||"❌ Não encontrado";
   let pa = localStorage.getItem("persist:auth");
   let eat="❌ Não encontrado", nick="❌ Não encontrado", acc="❌ Não encontrado", reg="❌ Não encontrado";
-  try{if(pa){let p1=JSON.parse(pa);if(p1.param){let p2=JSON.parse(p1.param);eat=p2.eat||eat;nick=p2.nickname||nick;acc=p2.account_id||acc;reg=p2.region||reg;}}}catch(e){}
+  try{
+    if(pa){
+      let p1=JSON.parse(pa);
+      if(p1.param){
+        let p2=JSON.parse(p1.param);
+        eat=p2.eat||eat;
+        nick=p2.nickname||nick;
+        acc=p2.account_id||acc;
+        reg=p2.region||reg;
+      }
+    }
+  }catch(e){}
+
   document.getElementById('npData').innerText=\`🔑 TOKEN:\n${token}\n\n🔐 ACESS_TOKEN (EAT):\n${eat}\n\n👤 NICK:\n${nick}\n\n🆔 ID:\n${acc}\n\n🌎 REGIÃO:\n${reg}\`;
-  document.getElementById('copyBtn').onclick=function(){navigator.clipboard.writeText(document.getElementById('npData').innerText);this.innerText='✔ Copiado!';setTimeout(()=>{this.innerText='📋 Copiar';},1500);}
-  document.getElementById('closeBtn').onclick=function(){panel.remove();}
+
+  document.getElementById('copyBtn').onclick=function(){
+    const temp = document.createElement('textarea');
+    temp.value = document.getElementById('npData').innerText;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    temp.remove();
+    this.innerText='✔ Copiado!';
+    setTimeout(()=>{this.innerText='📋 Copiar';},1500);
+  };
+
+  document.getElementById('closeBtn').onclick=function(){
+    panel.style.transform='translate(-50%,-50%) scale(0.8)';
+    panel.style.opacity='0';
+    setTimeout(()=>{panel.remove();},300);
+  };
 })();`;
 
 // Copiar bookmarklet
 document.getElementById('btnCopyPC').addEventListener('click', ()=>{
-  navigator.clipboard.writeText(bookmarkletPC)
-    .then(()=>alert('📋 Bookmarklet PC & iOS copiado!'))
-    .catch(()=>alert('⚠️ Não foi possível copiar, copie manualmente.'));
+  const temp = document.createElement('textarea');
+  temp.value = bookmarkletPC;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand('copy');
+  temp.remove();
+  alert('📋 Bookmarklet PC & iOS copiado!');
 });
 
 // Abrir links
